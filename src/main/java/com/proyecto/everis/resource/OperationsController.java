@@ -50,8 +50,8 @@ public class OperationsController {
 	            value = "Movimientos de cuenta",
 	            notes = "Resgistra los movimientos de cuenta, retiro o depósito"
 	    )
-		@CircuitBreaker(name="ms2", fallbackMethod = "findError")
-		@TimeLimiter(name="ms2")
+		@CircuitBreaker(name="ms3", fallbackMethod = "findError")
+		@TimeLimiter(name="ms3")
 		@PostMapping("/updateaccounts")
 		Mono<Account> updateAccount(HttpServletRequest request) {
 			Double cambio=Double.parseDouble(request.getParameter("monto"));
@@ -85,8 +85,8 @@ public class OperationsController {
 	            value = "Transferencia",
 	            notes = "Realiza y registra las transferencias entre cuentas"
 	    )
-		@CircuitBreaker(name="ms2", fallbackMethod = "findError")
-		@TimeLimiter(name="ms2")
+		@CircuitBreaker(name="ms3", fallbackMethod = "findError")
+		@TimeLimiter(name="ms3")
 		@PostMapping("/transferaccounts")
 		Mono<Account> transferAccount(HttpServletRequest request) {
 			Double cambio=Double.parseDouble(request.getParameter("monto"));
@@ -125,8 +125,8 @@ public class OperationsController {
 	            value = "Pago de credito",
 	            notes = "Resgistra y realiza el pago de creditos desde una cuenta"
 	    )
-		@CircuitBreaker(name="ms2", fallbackMethod = "findError")
-		@TimeLimiter(name="ms2")
+		@CircuitBreaker(name="ms3", fallbackMethod = "findError")
+		@TimeLimiter(name="ms3")
 		@PostMapping("/paycredits")
 		Mono<Account> payCredit(HttpServletRequest request) {
 			Double cambio=Double.parseDouble(request.getParameter("monto"));
@@ -165,8 +165,8 @@ public class OperationsController {
 	            value = "Registro de movimientos de TC",
 	            notes = "También actualiza la cuenta acorde al movimiento"
 	    )
-		@CircuitBreaker(name="ms2", fallbackMethod = "findError")
-		@TimeLimiter(name="ms2")
+		@CircuitBreaker(name="ms3", fallbackMethod = "findError")
+		@TimeLimiter(name="ms3")
 		@GetMapping("/updatecredits/{id}/{monto}")
 		Mono<Credit> updateCredit(@PathVariable String id,@PathVariable String monto) {
 			Double cambio=Double.parseDouble(monto);
